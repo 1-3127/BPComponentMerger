@@ -1,9 +1,9 @@
 {
   "FileVersion": 3,
-  "Version": 4,
-  "VersionName": "0.3.0",
+  "Version": 5,
+  "VersionName": "0.4.0",
   "FriendlyName": "Selected Component Merger",
-  "Description": "Merge selected StaticMeshComponents directly from the Blueprint Components panel while preserving materials, baking to the parent-origin frame, and replacing the selected source components.",
+  "Description": "Merge selected Blueprint StaticMeshComponents to one Static Mesh or pack them into a new Blueprint while preserving the Parent Origin transform policy.",
   "Category": "Editor",
   "CreatedBy": "OpenAI",
   "CanContainContent": false,
