@@ -311,6 +311,13 @@ void FSelectedComponentMergerModule::AddMergeMenuEntry(FToolMenuSection& Section
         LOCTEXT("MergeSelectedTooltip", "Merge selected Blueprint StaticMeshComponents. The last-selected component is used as the template for a new merged component; selected source components are deleted. Pivot position is the parent origin, while parent rotation/scale are countered on the merged component."),
         FSlateIcon(),
         FUIAction(FExecuteAction::CreateStatic(&FSelectedComponentMergerModule::ExecuteMerge, WeakContext)));
+
+    Section.AddMenuEntry(
+        "SelectedComponentMerger.PackSelectedToBlueprint",
+        LOCTEXT("PackSelectedLabel", "Pack Selected Static Mesh Components to Blueprint"),
+        LOCTEXT("PackSelectedTooltip", "Pack selected Blueprint StaticMeshComponents into a new Blueprint without merging geometry. Source components are replaced by a ChildActorComponent using the same Parent Origin transform policy."),
+        FSlateIcon(),
+        FUIAction(FExecuteAction::CreateStatic(&FSelectedComponentMergerModule::ExecutePackToBlueprint, WeakContext)));
 }
 
 void FSelectedComponentMergerModule::ExecuteMerge(TWeakObjectPtr<USubobjectEditorMenuContext> WeakContext)
