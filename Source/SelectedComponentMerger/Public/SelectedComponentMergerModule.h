@@ -17,4 +17,5 @@ private:
 
     static void AddMergeMenuEntry(FToolMenuSection& Section);
     static void ExecuteMerge(TWeakObjectPtr<USubobjectEditorMenuContext> WeakContext);
+    static void ExecutePackToBlueprint(TWeakObjectPtr<USubobjectEditorMenuContext> WeakContext);
 };
