@@ -630,7 +630,19 @@ void FSelectedComponentMergerModule::ExecutePackToBlueprint(
         }
 
         ChildActorTemplate->Modify();
-        ChildActorTemplate->SetChildActorClass(PackedBlueprint->GeneratedClass);
+
+        UClass* PackedGeneratedClass = PackedBlueprint->GeneratedClass.Get();
+        if (!PackedGeneratedClass || !PackedGeneratedClass->IsChildOf(AActor::StaticClass()))
+        {
+            Notify(
+                LOCTEXT(
+                    "InvalidPackedGeneratedClass",
+                    "The packed Blueprint did not produce a valid Actor generated class."),
+                SNotificationItem::CS_Fail);
+            return;
+        }
+
+        ChildActorTemplate->SetChildActorClass(PackedGeneratedClass);
         ChildActorTemplate->SetRelativeTransform(PackedActorRelativeTransform);
         ChildActorTemplate->PostEditChange();
 
